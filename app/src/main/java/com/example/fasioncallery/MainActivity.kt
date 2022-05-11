@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fasioncallery.databinding.ActivityMainBinding
+import java.time.zone.ZoneOffsetTransition
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewPager(binding: ActivityMainBinding) {
         val adapter = IntroAdapter(PageLists.introSlides)
         viewPager2 = binding.viewpager
+
         viewPager2.adapter = adapter
         viewPager2.registerOnPageChangeCallback(pager2Callback)
         binding.dotsIndicator.setViewPager2(viewPager2)
