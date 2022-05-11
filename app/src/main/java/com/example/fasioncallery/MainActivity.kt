@@ -1,10 +1,10 @@
 package com.example.fasioncallery
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fasioncallery.databinding.ActivityMainBinding
-import java.time.zone.ZoneOffsetTransition
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
 
             if (position == PageLists.introSlides.size - 1) {
                 binding.controllerBtn.text = "Finish"
+                binding?.controllerBtn?.setOnClickListener {
+                    startActivity(Intent(this@MainActivity, GalleryActivity::class.java))
+                }
             } else {
                 binding.controllerBtn.text = "Next"
                 binding.controllerBtn.setOnClickListener {

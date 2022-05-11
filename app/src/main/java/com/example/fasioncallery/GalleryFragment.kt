@@ -19,9 +19,28 @@ class GalleryFragment : Fragment() {
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val pos = arguments?.getInt(POSISION_ARG)
+        val viewPager = binding?.galleryVp
+
+        pos?.let {
+            when (pos) {
+                0 -> viewPager?.adapter = IntroAdapter(PageLists.tShirts)
+                1 -> viewPager?.adapter = IntroAdapter(PageLists.sneakers)
+                2 -> viewPager.adapter = IntroAdapter(PageLists.hoodies)
+            }
+        }
+    }
+
     companion object {
         var POSISION_ARG = "posision_arg"
-        @JvmStatic
 
+        @JvmStatic
+        fun newInstace(position: Int) = GalleryFragment().apply {
+            arguments = Bundle().apply {
+                putInt(POSISION_ARG, position)
+            }
+        }
     }
 }
